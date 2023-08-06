@@ -9,7 +9,7 @@
     "prod": "NODE_ENV=production npx nodemon",
     "stag": "NODE_ENV=staging npx nodemon",
     "watch": "rimraf ./compile && tsc && NODE_ENV=development node compile/index.js",
-    "build": "rimraf ./compile &&  tsc",
+    "build": "tsc",
     "start": "node compile/index.js"
   },
   "keywords": [],
