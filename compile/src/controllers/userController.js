@@ -16,10 +16,10 @@ const loginUser = async (req, res) => {
         }
         const passwordCompare = await bcryptjs_1.default.compare(password, user.password);
         if (!passwordCompare) {
-            return res.status(400).send({ success: false, error: 'Please try to login with correct credentials2' });
+            return res.status(400).send({ success: false, error: 'Please try to login with correct credentials' });
         }
         const token = await (0, auth_1.sign)(user);
-        res.status(200).send({ message: 'user login successfully', success: true, token, data: user });
+        res.status(200).send({ message: 'user login successfully', success: true, token, data: user, id: user._id });
     }
     catch (error) {
         console.log(error);
