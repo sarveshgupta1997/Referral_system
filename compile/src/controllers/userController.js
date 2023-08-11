@@ -9,6 +9,25 @@ const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const auth_1 = require("../middlewares/auth");
 const loginUser = async (req, res) => {
     try {
+        const userAgent = req.headers['user-agent'] || '';
+        console.log(userAgent);
+        let url = "";
+        if (userAgent.includes('Android')) {
+            // Redirect for Android users
+            url = 'https://android-url.com';
+        }
+        else if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
+            // Redirect for iOS users
+            url = 'https://ios-url.com';
+        }
+        else if (userAgent.includes('Windows')) {
+            // Redirect for Windows users
+            url = 'https://windows-url.com';
+        }
+        else {
+            // Redirect for other devices (fallback)
+            url = 'https://fallback-url.com';
+        }
         const { email, password } = req.body;
         let user = await User_1.User.findOne({ email });
         if (!user) {
@@ -19,7 +38,7 @@ const loginUser = async (req, res) => {
             return res.status(400).send({ success: false, error: 'Please try to login with correct credentials' });
         }
         const token = await (0, auth_1.sign)(user);
-        res.status(200).send({ message: 'user login successfully', success: true, token, data: user, id: user._id });
+        res.status(200).send({ message: 'user login successfully', success: true, token, data: user, id: user._id, url });
     }
     catch (error) {
         console.log(error);
