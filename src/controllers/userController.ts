@@ -12,16 +12,16 @@ export const loginUser = async (req: Request, res: Response) => {
         let url = "";
         if (userAgent.includes('Android')) {
             // Redirect for Android users
-            url = 'https://android-url.com';
+            url = 'https://play.google.com/store/apps/details?id=net.one97.paytm&pcampaignid=web_share';
         } else if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
             // Redirect for iOS users
-            url = 'https://ios-url.com';
+            url = 'https://apps.apple.com/in/app/paytm-secure-upi-payments/id473941634';
         } else if (userAgent.includes('Windows')) {
             // Redirect for Windows users
-            url = 'https://windows-url.com';
+            url = 'https://64d541c8284a8c08b9a7e561--wonderful-quokka-a6607b.netlify.app/';
         } else {
             // Redirect for other devices (fallback)
-            url = 'https://fallback-url.com';
+            url = 'https://64d541c8284a8c08b9a7e561--wonderful-quokka-a6607b.netlify.app/';
         }
 
 
